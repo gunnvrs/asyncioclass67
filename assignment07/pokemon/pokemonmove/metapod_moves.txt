@@ -1,0 +1,5 @@
+string-shot
+harden
+iron-defense
+bug-bite
+electroweb
