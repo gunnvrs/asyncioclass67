@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pokemons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}"
+</head>
+<body>
+    <div class="ui inverted segment">
+        <h1 class="ui olive header">Pokemon Flask Asynchronous Version</h1>
+        <h4 class="ui grey header">|<a href="http://127.0.0.1:50000">Pokemon Flask Synchronous</a> | <a href="http://127.0.0.1:50001">Pokemon Flask Asynchronous</a> |<a href="http://127.0.0.1:50002">Pokemon Quart Asynchronous</a> | </h4>
+        <h5 class="ui grey header">Get {{pokemons|length}} pokemons. Time taken: {{ end_time-start_time }} seconds</h5>
+    </div>
+    <div id="container">
+        <div id="poke-container" class="ui cards">
+            {% for pokemon in pokemons: %}
+            <div class="ui card">
+                <div class="image">
+                    <img src="{{pokemon.other_sprites.dream_world.front['default']}}">
+                </div>
+                <div class="content">
+                    <h4 class="header"><strong>NAME: </strong>{{ pokemon.name | capitalize }}</h4>
+                    
+                    <div class="description">
+                        <p><strong>ABILITIES: </strong>  {{ pokemon.abilities | map(attribute='name') | join(', ')}}</p>
+                    </div>
+                    
+                    <div class="ui list">
+                    {% for field in pokemon.base_stats._fields %}
+                        <div class="item">{{ pokemon.base_stats[field] }} {{ field | upper }}</div>
+                    {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>
