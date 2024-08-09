@@ -14,9 +14,9 @@ def get_pokemon(url):
 
     return pokemon
 
-def get_pokemons():
+def get_pokemons(): 
     rand_list=[]
-    for i in range(5):
+    for i in range(20):
         rand_list.append(random.randint(1,151))
 
     pokemon_data = []
