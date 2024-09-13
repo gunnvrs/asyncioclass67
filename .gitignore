@@ -166,3 +166,5 @@ asyncio-guide/
 .DS_Store
 
 assignment07/pokemon/pokemonmove/*.txt
+bonus/kafka
+bonus/zookeeper
