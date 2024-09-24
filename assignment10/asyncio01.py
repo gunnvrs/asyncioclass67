@@ -1,11 +1,9 @@
 # example of using an asyncio queue
 from random import random 
 import asyncio
-import time
 
 # coroutine to generate work
 async def producer (queue):
-    producer_start_time = time.perf_counter()
     print('Producer: Running')
     # generate work
     for i in range (10):
@@ -27,7 +25,7 @@ async def consumer (queue):
     # consume work
     while True:
         # get a unit of work
-        item = await queue.get ()
+        item = await queue.get()
         # check for stop signal
         if item is None:
             break
@@ -41,6 +39,6 @@ async def main():
     # create the shared queue
     queue = asyncio.Queue ()
     # run the producer and consumers
-    await asyncio.gather(producer(queue), consumer(queue), consumer(queue))
+    await asyncio.gather(producer(queue), consumer(queue))
 # start the asyncio program
 asyncio.run(main())

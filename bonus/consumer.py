@@ -5,8 +5,8 @@ import asyncio
 
 async def consume():
     consumer = AIOKafkaConsumer(
-        'my_topic', 'my_other_topic',
-        bootstrap_servers='localhost:9092',
+        'my_topic', 'my_other_topic', 'karn_topic',
+        bootstrap_servers=['172.16.46.103:9092', '172.16.46.104:9093', '172.16.46.207:9094'],
         group_id="my-group")
     # Get cluster layout and join group `my-group`
     await consumer.start()
